@@ -1,0 +1,134 @@
+body,html {
+    background-color: #444654;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fbfcfe;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    z-index: 2;
+    border-radius: 5px;
+    background-color: #343541;
+    width: 99%;
+    height: 40px;
+    margin-top: 0;
+    box-shadow: 0 0 5px #000000;
+}
+#chat-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px 80px; 
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 10%;
+}
+#messages {
+    max-height: 300px;
+    overflow-y: auto;
+}
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #c5c3c34d;
+    color: #fff;
+}
+.user-message {
+    background-color: #343541;
+}
+.bot-response {
+    background-color: #444654;
+    padding-right: 10px;
+}
+form {
+    position: fixed;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: 2;
+}
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+.searchTerm {
+    width: 100%;
+    border: 3px solid #58585d;
+    border-right: none;
+    padding: 5px;
+    height: 13px;
+    border-radius: 8px 8px 8px 8px;
+    outline: none;
+    color: #DCDCDC;
+    background-color: #58585d;
+    padding-right: 20px;
+    overflow-y:auto;
+}
+.searchButton {
+    position: absolute;
+    width: 25px;
+    height: 27.5px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #a3a3a5;
+    text-align: left;
+    right: 0;
+}
+.wrap {
+    position: fixed;
+    width: 80%;
+    top: 96%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+pre.code-block {
+    position: relative;
+    background-color: #343541;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #c5c3c34d;
+    margin: 10px 0;
+    color: #fff;
+    white-space: pre-wrap;
+    overflow: auto;
+    max-width: 100%;
+}
+pre.small{
+    display: inline-block;
+    background-color: #5f6063;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 0;
+    color: #fff;
+    white-space: pre-wrap;
+}
+h2 {
+    color: #fbfcfe;
+    display: flex;
+    align-items: left; 
+    font-size: 130%;
+}
+
+.copy-button {
+    position: absolute;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+}
+.copy-button:hover {
+    background-color: #2980b9;
+}

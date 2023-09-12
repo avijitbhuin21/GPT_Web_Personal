@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat App</title>
+    <link rel="stylesheet" type="text/css" href="static/css/asset_code.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>GPT-Web-Personal</h1>
+    
+    <div id="chat-container">
+        {% for user_message, bot_response in chat_history %}
+            <div class="message user-message">{{ user_message }}</div>
+            <div class="message bot-response">
+                <div class="response-text">{{ bot_response | safe }}</div>
+            </div>
+        {% endfor %} 
+    </div>
+    
+    <div id="generating-message" style="display: none;">Generating...</div>
+    
+    <form method="post" class="wrap" id="chat-form">
+        <div class="search">
+            <input type="text" id="user-message-input" name="user_message" class="searchTerm" placeholder="Enter your message">
+            <button type="submit" class="searchButton">➢</button>
+        </div>
+    </form>
+    <script src="static/js/asset_code.js"></script>
+    
+</body>
+</html>
