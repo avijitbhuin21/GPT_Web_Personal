@@ -4,8 +4,8 @@ from EdgeGPT.EdgeUtils import Query
 
 def structured_response(user_prompt):
     a = str(Query(user_prompt, style="precise", cookie_files="templates\cookies.json"))
-    pattern = r'```(.*?)```'
-    code_blocks = re.findall(pattern, a, re.DOTALL)
+    pattern1 = r'```(.*?)```'
+    code_blocks = re.findall(pattern1, a, re.DOTALL)
     c_b = code_blocks[:]  # Make a copy
 
     for i in range(len(code_blocks)):
@@ -20,9 +20,14 @@ def structured_response(user_prompt):
     for i in range(len(c_b)):
         a = a.replace('```' + c_b[i] + '```', code_blocks[i])  # Reassign 'a' with replaced content
 
-    pattern = r'`(.*?)`'
-    code_blocks = set(re.findall(pattern, a, re.DOTALL))
+    block_letter=re.findall(r'\*\*(.*?)\*\*', a)
+    for i in block_letter:
+        a=a.replace('**'+i+'**','<strong>'+i+'</strong>')
+    pattern3 = r'`(.*?)`'
+    code_blocks = set(re.findall(pattern3, a, re.DOTALL))
     for i in code_blocks:
         a=a.replace("`"+i+"`","<pre class='small'>"+i+"</pre>")
+    a=re.sub(r'(\d+\.)', r'<br>\1', a)
+    a=re.sub(r'\(\^\d+\^\)|\[\^\d+\^\]', '', a)
     return a
 

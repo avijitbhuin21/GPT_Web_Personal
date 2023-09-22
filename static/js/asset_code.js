@@ -31,9 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+var emojis = ["🌕", "🌔", "🌓", "🌒", "🌑", "🌘", "🌗", "🌖", "🌕"];
+var i = 0;
+setInterval(function() {
+  document.getElementById("emoji").innerHTML = emojis[i];
+  i = (i + 1) % emojis.length;
+}, 1000);
+
+
 document.getElementById('chat-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
-        
     var userMessageInput = document.getElementById('user-message-input');
     var userMessage = userMessageInput.value.trim(); // Trim whitespace
     // Check if user input is not blank
@@ -74,6 +81,6 @@ document.getElementById('chat-form').addEventListener('submit', function(event) 
             // $('body,html').css('background-color', '#343541');
         }
     });
-
     }
 });
+

@@ -16,13 +16,14 @@ h1 {
     background-color: #343541;
     width: 99%;
     height: 40px;
-    margin-top: 0;
+    margin-top: 5px;
     box-shadow: 0 0 5px #000000;
 }
 #chat-container {
+    position: relative;
     width: 100%;
     margin: 0 auto;
-    padding: 30px 20px 80px; 
+    padding: 50px 20px 80px; 
     box-sizing: border-box;
     position: relative;
     border-radius: 10%;

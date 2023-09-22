@@ -1,3 +1,11 @@
+'''
+git commands:
+
+git pull GPT_Web_Personal main --allow-unrelated-histories
+git push GPT_Web_Personal main
+'''
+
+
 from bing_Image_generator import ImageGen
 
 auth_cookie = "1glHV2CTJBuTvq2UOoJIWLB6F-ciBOvMFhRX2FNuDybkqaFPfqZofkh9FanSF1z2vBujStWGLXbWRMagfukBkoRMOUdoNEgtkVqOoTYSp_cE3RrooY754f-aYqJOy16W7C3f8yIYuaNMSdsajPmOxUkGFsGkXkXF8tIEE8yfjOjk-y-HGUbcgn-arQHONGdkZtWrkgtHr0xyVLEH6ymkSveFF9x3lM7i1jgoJk1QdJIE"

@@ -1,8 +1,17 @@
-<div>
-    <link rel="stylesheet" href="css/trial.css"  />
-    <div class="home-container">
-      <div class="home-container1"></div>
-      <button> submit </button>
-    </div>
-  </div>
-  
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="emoji">🌕</p>
+
+<script>
+var emojis = ["🌕", "🌔", "🌓", "🌒", "🌑", "🌘", "🌗", "🌖", "🌕"];
+var i = 0;
+setInterval(function() {
+  document.getElementById("emoji").innerHTML = emojis[i];
+  i = (i + 1) % emojis.length;
+}, 100);
+</script>
+
+</body>
+</html>
