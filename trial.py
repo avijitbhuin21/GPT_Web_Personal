@@ -1,6 +1,13 @@
-import re
+from bing_Image_generator import Image_Gen
+from IPython.display import Image,display
+import json
 
-text = 'To open Git in Visual Studio Code, you can follow these steps: 1. **Ensure Git is Installed**: Make sure you have Git installed on your computer. If Git is missing, the Source Control view in VS Code shows instructions on how to install it. 2. **Sign into VS Code with GitHub Account**: You can sign into VS Code with your GitHub account in the Accounts menu in the lower right of the Activity bar to enable additional features. 3. **Clone a Repository Locally**: To clone a repository from GitHub, execute the Git: Clone command or select the Clone Repository button in the Source Control view. 4. **Initialize a Repository in a Local Folder**: To initialize a new local repository, pick an existing or new folder on your computer and open it in VS Code. In the Source Control view, select the Initialize Repository button. 5. **Publish Local Repository to GitHub**: Once you have a local Git repository set up, you can publish it to GitHub. For more detailed instructions, you can refer to this [official beginner tutorial] or this [setup guide]. If you want to integrate Git Bash with VS Code, you can follow this [tutorial]. Remember that these steps might vary slightly based on your specific setup and requirements.'
+prompt='a half humanoid made of a lot of watch wheels'
 
-matches = 
-print(matches)
+data = json.load(open("templates\cookies.json"))
+image_generator = Image_Gen(all_cookies=data)
+
+res=image_generator.Generate(prompt=prompt)
+for link in res:    
+    print(link)    
+    display(Image(url=link))

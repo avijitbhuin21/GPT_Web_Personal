@@ -133,3 +133,10 @@ h2 {
 .copy-button:hover {
     background-color: #2980b9;
 }
+
+img{
+    width: 200px;
+    height: 200px;
+    margin-right: 7.5px;
+    margin-left: 7.5px;
+}

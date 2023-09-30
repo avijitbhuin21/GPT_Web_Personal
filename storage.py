@@ -658,3 +658,28 @@ document.getElementById('chat-form').addEventListener('submit', function(event) 
 });
 
 '''
+
+NEW_IMAGE_GENERATOR: 
+
+from bing_Image_generator import ImageGen
+from IPython.display import Image,display
+import json
+
+f = open("templates\cookies.json")
+data = json.load(f)
+for i in data:
+    if i["name"]=='SRCHHPGUSR':
+        auth_cookie_SRCHHPGUSR=i["value"]
+    elif i["name"]=='_U':
+        auth_cookie=i["value"]
+if auth_cookie and auth_cookie_SRCHHPGUSR:
+    image_generator = ImageGen(auth_cookie_SRCHHPGUSR, auth_cookie, all_cookies=data)
+
+    prompt = "Einstein Walking through an empty Howrah Bridge in Kolkata."
+    image_links = image_generator.get_images(prompt)
+
+    for link in image_links:    
+        print(link)    
+        display(Image(url=link))    
+    else:
+        print("No cookies available")
