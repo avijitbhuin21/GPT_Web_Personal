@@ -29,13 +29,10 @@ class Image_Gen:
     def Generate(self,prompt: str)-> list:
         url_encoded_prompt = requests.utils.quote(prompt)
         payload= "q="+url_encoded_prompt+"&qs=ds"
-        urls=[f"{bing}/images/create?q={url_encoded_prompt}&rt={rt}&FORM=GENCRE" for rt in [4, 3]]
-        for i in urls:
-            response=self.session.post(i,allow_redirects=False, data=payload, timeout= 200)
-            if response.status_code==302:
-                break
-            else:
-                print("Error while generating. Error Code ="+ response.status_code)
+        url=f"{bing}/images/create?q={url_encoded_prompt}&rt=4&FORM=GENCRE"
+        response=self.session.post(url,allow_redirects=False, data=payload, timeout= 200)
+        if response.status_code!=302:
+            print("Error while generating. Error Code ="+ str(response.status_code))
         id=response.headers["Location"].split("id=")[-1]
         new_url=f"https://www.bing.com/images/create/async/results/{id}?q={url_encoded_prompt}"
         start_wait = time.time()
@@ -61,5 +58,8 @@ def disp_img(prompt: str):
     data = json.load(open("templates\cookies.json"))
     image_generator = Image_Gen(all_cookies=data)
     res=image_generator.Generate(prompt=prompt)
-    res=f'<a href= "{res[0]}" target="_blank" ><img src="{res[0]}" alt="Image 1"></a><a href= "{res[1]}" target="_blank" ><img src="{res[1]}" alt="Image 2"></a><a href= "{res[2]}" target="_blank" ><img src="{res[2]}" alt="Image 3"></a><a href= "{res[3]}" target="_blank"><img src="{res[3]}" alt="Image 4"></a>'
-    return res
+    r=""
+    for i in range(len(res)):
+        m=f'<a href= "{res[i]}" target="_blank" ><img src="{res[i]}" alt="Image {i+1}"></a>'
+        r+=m
+    return r

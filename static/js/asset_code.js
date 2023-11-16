@@ -32,11 +32,25 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 var emojis = ["🌕", "🌔", "🌓", "🌒", "🌑", "🌘", "🌗", "🌖", "🌕"];
-var i = 0;
-setInterval(function() {
-  document.getElementById("emoji").innerHTML = emojis[i];
-  i = (i + 1) % emojis.length;
-}, 1000);
+var i = 0;        
+var intervalId;        
+
+// $('#chat-form').on('submit', function(e) {        
+//     e.preventDefault();        
+            
+//     $('#emoji').show();        
+            
+//     intervalId = setInterval(function() {        
+//         document.getElementById("emoji").innerHTML = emojis[i];            
+//         i = (i + 1) % emojis.length;
+//     }, 1000);
+
+//     setTimeout(function() {
+//         clearInterval(intervalId);
+//         document.getElementById("emoji").innerHTML = '';
+//         $('#emoji').hide();
+//     }, 5000);
+// });
 
 
 document.getElementById('chat-form').addEventListener('submit', function(event) {
@@ -45,6 +59,11 @@ document.getElementById('chat-form').addEventListener('submit', function(event) 
     var userMessage = userMessageInput.value.trim(); // Trim whitespace
     // Check if user input is not blank
     if (userMessage !== "") {
+        $('#emoji').show();
+        intervalId = setInterval(function() {        
+            document.getElementById("emoji").innerHTML = emojis[i];            
+            i = (i + 1) % emojis.length;
+        }, 100);
         // Update chat history
         var chatContainer = document.getElementById('chat-container');
         var userMessageDiv = document.createElement('div');
@@ -77,6 +96,10 @@ document.getElementById('chat-form').addEventListener('submit', function(event) 
             botResponseDiv.appendChild(responseTextDiv);
             chatContainer.appendChild(botResponseDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            clearInterval(intervalId);
+            document.getElementById("emoji").innerHTML = '';
+            $('#emoji').hide();
 
             // $('body,html').css('background-color', '#343541');
         }
