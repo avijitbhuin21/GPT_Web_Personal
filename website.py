@@ -13,7 +13,7 @@ def chat():
     if request.method == 'POST':
         user_message = request.form['user_message']
         if user_message != "":
-            if "image" not in user_message:
+            if "generate_image" not in user_message:
                 bot_response=structured_response(user_message)
                 chat_history.append([user_message, bot_response])
             else:
